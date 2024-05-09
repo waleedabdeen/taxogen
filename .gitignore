@@ -141,3 +141,6 @@ ENV/
 *.app
 
 ./code/word2vec
+
+code/spherecluster
+.vscode

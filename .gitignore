@@ -144,3 +144,4 @@ ENV/
 
 code/spherecluster
 .vscode
+code/word2vec

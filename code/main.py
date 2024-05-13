@@ -62,8 +62,9 @@ def recur(input_dir, node_dir, n_cluster, parent, n_cluster_iter, filter_thre,\
         try:
             children = run_clustering(full_data, df.doc_id_file, df.seed_keyword_file, n_cluster, node_dir, parent, \
                                       df.cluster_keyword_file, df.hierarchy_file, df.doc_membership_file)
-        except:
+        except Exception as error:
             print('Clustering not finished.')
+            print(error)
             return
         copyfile(df.seed_keyword_file, df.filtered_keyword_file)
     else:
@@ -74,8 +75,9 @@ def recur(input_dir, node_dir, n_cluster, parent, n_cluster_iter, filter_thre,\
             try:
                 children = run_clustering(full_data, df.doc_id_file, df.seed_keyword_file, n_cluster, node_dir, parent,\
                                df.cluster_keyword_file, df.hierarchy_file, df.doc_membership_file)
-            except:
+            except Exception as error:
                 print('Clustering not finished.')
+                print(error)
                 return
 
             start = time.time()
@@ -110,7 +112,7 @@ def main(opt):
     n_expand = opt['n_expand']
     n_cluster_iter = opt['n_cluster_iter']
     level = 0
-
+    
     # our method
     root_dir = opt['data_dir'] + 'our-l3-0.15/'
     copy_tree(init_dir, root_dir)

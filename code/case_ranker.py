@@ -41,7 +41,7 @@ def rank_phrase(case_file):
 	unif = [1.0 / cell_cnt] * cell_cnt
 
 	for ph in phrase_map:
-		ph_vec = [x[1] for x in phrase_map[ph].iteritems()]
+		ph_vec = [x[1] for x in phrase_map[ph].items()]
 		if len(ph_vec) < cell_cnt:
 			ph_vec += [0] * (cell_cnt - len(ph_vec))
 		# smoothing

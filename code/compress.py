@@ -1,7 +1,7 @@
 import argparse
 import utils
 import operator
-import Queue
+import queue
 import math
 from os import listdir
 from os.path import isfile, join, isdir, abspath, dirname, basename, exists
@@ -37,7 +37,7 @@ def parse_reidx(reidx_f):
 		if len(pd_map[ph]) > 0:
 			ph_idf[ph] = math.log(float(d_cnt) / len(pd_map[ph]))
 
-	print 'Inverted Index file read.'
+	print('Inverted Index file read.')
 
 
 
@@ -81,7 +81,7 @@ def get_rep(folder, c_id, N):
 				break
 		
 	elif ph_idf == None:
-		print 'looking at embeddings for %s' % folder
+		print('looking at embeddings for %s' % folder)
 
 		ph_f = '%s/embeddings.txt' % par_folder
 		kw_f = '%s/keywords.txt' % par_folder
@@ -119,7 +119,7 @@ def get_rep(folder, c_id, N):
 				result_phrases.append(ph)
 	else:
 		# Using TF-IDF to generate
-		print 'looking at tf-idf for %s' % folder
+		print ('looking at tf-idf for %s' % folder)
 		d_clus_f = '%s/paper_cluster.txt' % par_folder
 		kw_clus_f = '%s/cluster_keywords.txt' % par_folder
 		docs = []
@@ -161,7 +161,7 @@ def get_rep(folder, c_id, N):
 
 def recursion(root, o_file, N):
 
-	q = Queue.Queue()
+	q = queue.Queue()
 	q.put((root, -1, '*'))
 
 	g = open(o_file, 'w+')
